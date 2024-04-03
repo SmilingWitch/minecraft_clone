@@ -12,7 +12,6 @@ const CHARACTER_JUMP_FORCE = 5
 
 export const Player = () => {
     const actions = useKeyboard()
-    console.log(actions)
 
     const {camera} = useThree() 
     const [ref, api] = useSphere(() => ({
@@ -74,7 +73,7 @@ export const Player = () => {
             direction.z
         )
 
-        if(actions.jump){
+        if(actions.jump && Math.abs(vel.current[1]) < 0.05){
             api.velocity.set(
                 vel.current[0],
                 CHARACTER_JUMP_FORCE,
