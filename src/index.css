@@ -29,3 +29,27 @@
     left: 50%;
     transform: translate(-50%, -50%);
  }
+ .imagesBx{
+   position: absolute;
+   bottom: 32px;
+
+   padding: 16px;
+   display: flex;
+   gap: 16px;
+   background: gray;
+   border: 4px solid black;
+
+ }
+ img{
+   position: relative;
+   width: 100px;
+   height: 100px;
+   image-rendering: pixelated;
+   border: 4px solid black;
+ }
+ .imagesBx img.selected{
+   border: 4px solid rgb(184, 19, 19);
+ }
+ .imagesBx.hidden{
+  display: none;
+ }
