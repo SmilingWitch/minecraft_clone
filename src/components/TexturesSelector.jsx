@@ -4,7 +4,7 @@ import { useKeyboard } from "../hooks/useKeyboard"
 import { useEffect, useState } from "react"
 
 export default function TextureSelector(){
-    const [visible, setVisible] = useState(false)
+    const [visible, setVisible] = useState(true)
     const [texture, setTexture] = useStore(state =>
         [state.texture, state.setTexture])
 
@@ -15,6 +15,17 @@ export default function TextureSelector(){
         wood,
         log
     } = useKeyboard()
+
+    {/*useEffect(() => {
+        const visibilityTimeout = setTimeout(() => {
+            setVisible(false)
+        }, 1000)
+        setVisible(true)
+
+        return () => {
+            clearTimeout(visibilityTimeout)
+        }
+    },[texture] )*/}
 
     useEffect(() => {
         const options = {
@@ -33,12 +44,27 @@ export default function TextureSelector(){
             const [textureName] = selectedTexture
             console.log(textureName)
 
-            console.log(textureName)
             setTexture(textureName)
         }
 
         
     }, [dirt, grass, glass, wood, log])
 
+    if(!visible) return null
 
+    return(
+        <div className="imagesBx" >
+            {
+              Object.entries(images).map(([imgKey, img]) => {
+                return <img
+                className={texture === imgKey.replace('Img', '') ? 'selected' : ''}
+                    key = {imgKey}
+                    src = {img}
+                    alt = {imgKey}
+                    />
+
+              })  
+            }
+        </div>
+    )
 }
