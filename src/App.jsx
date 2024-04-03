@@ -5,6 +5,9 @@ import { Ground } from './components/Ground'
 import { FPV as Fpv } from './components/FPV'
 import { Player } from './components/Player'
 import React from 'react';
+import Cubes from "./components/Cubes"
+import TextureSelector from './components/TexturesSelector'
+
 
 
 
@@ -40,15 +43,20 @@ function App() {
   return (
 
     <ErrorBoundary>
+      <>
     <Canvas>
       <Sky sunPosition={[100,100,20]}/>
       <ambientLight intensity={1.2}/>
       <Fpv/>
+      <TextureSelector/>
       <Physics>
+        <Cubes/>
         <Player/>
         <Ground/>
       </Physics>
     </Canvas>
+    <div className= "pointer">+</div>
+    </>
   </ErrorBoundary>
 
 
